@@ -1,8 +1,14 @@
-TARGETS = buildugraph printugraph builddgraph printdgraph and da cc rcc
+BINDIR = bin
+LIBDIR = lib
+INCDIR = include
+
+TARGETS = ${BINDIR}/buildugraph ${BINDIR}/printugraph \
+		  ${BINDIR}/builddgraph ${BINDIR}/printdgraph \
+		  ${BINDIR}/and ${BINDIR}/da ${BINDIR}/cc ${BINDIR}/rcc
 OBJECTS = graph.o common.o membox.o rbtree.o
 
-INCLUDE = -I./include
-LIBPATH = -L./lib
+INCLUDE = -I./${INCDIR}
+LIBPATH = -L./${LIBDIR}
 
 LIBS = 
 
@@ -10,7 +16,9 @@ LIBS =
 CFLAGS = ${INCLUDE} -Wall -O3 -c
 OFLAGS = ${LIBPATH} ${LIBS} -o
 
-CC = gcc
+# CC = gcc
+# CC = clang
+CC = cc
 
 %.o : %.c
 	${CC} ${CFLAGS} $^ -o $@
@@ -23,26 +31,26 @@ clean :
 tags :
 	ctags -R
 
-buildugraph : buildugraph.o ${OBJECTS}
+${BINDIR}/buildugraph : buildugraph.o ${OBJECTS}
 	${CC} ${OFLAGS} $@ $^
 
-builddgraph : builddgraph.o ${OBJECTS}
+${BINDIR}/builddgraph : builddgraph.o ${OBJECTS}
 	${CC} ${OFLAGS} $@ $^
 
-printugraph : printugraph.o ${OBJECTS}
+${BINDIR}/printugraph : printugraph.o ${OBJECTS}
 	${CC} ${OFLAGS} $@ $^
 
-printdgraph : printdgraph.o ${OBJECTS}
+${BINDIR}/printdgraph : printdgraph.o ${OBJECTS}
 	${CC} ${OFLAGS} $@ $^
 
-and : and.o ${OBJECTS}
+${BINDIR}/and : and.o ${OBJECTS}
 	${CC} ${OFLAGS} $@ $^
 
-da : da.o ${OBJECTS}
+${BINDIR}/da : da.o ${OBJECTS}
 	${CC} ${OFLAGS} $@ $^
 
-cc : cc.o ${OBJECTS}
+${BINDIR}/cc : cc.o ${OBJECTS}
 	${CC} ${OFLAGS} $@ $^
 
-rcc : rcc.o ${OBJECTS}
+${BINDIR}/rcc : rcc.o ${OBJECTS}
 	${CC} ${OFLAGS} $@ $^

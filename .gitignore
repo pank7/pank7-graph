@@ -4,3 +4,5 @@ var
 .emacs.desktop
 tags
 semantic.cache
+*.o
+bin/*

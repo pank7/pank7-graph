@@ -52,10 +52,8 @@ extern "C" {
         const typeof( ((type *)0)->member ) *__mptr = (ptr);                   \
         (type *)( (char *)__mptr - offsetof(type,member) );})
 
-#define smp_read_barrier_depends()      do { } while(0)
 #define rcu_dereference(p)     ({                                              \
                                  typeof(p) _________p1 = p;                    \
-                                 smp_read_barrier_depends();                   \
                                  (_________p1);                                \
                                 })
 
