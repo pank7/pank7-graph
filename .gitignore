@@ -5,4 +5,5 @@ var
 tags
 semantic.cache
 *.o
+*.swp
 bin/*

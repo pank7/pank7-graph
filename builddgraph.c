@@ -33,6 +33,7 @@ main (int argc, char **argv)
     case 'h':
     default:
       help (argv[0]);
+      exit (-1);
     }
   }
 

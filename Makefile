@@ -17,8 +17,8 @@ CFLAGS = ${INCLUDE} -Wall -O3 -c
 OFLAGS = ${LIBPATH} ${LIBS} -o
 
 # CC = gcc
-# CC = clang
-CC = cc
+CC = clang
+# CC = cc
 
 %.o : %.c
 	${CC} ${CFLAGS} $^ -o $@
